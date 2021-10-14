@@ -1,0 +1,5 @@
+agh/ics/oop/Direction.java
+ agh.ics.oop.Direction
+agh/ics/oop/World.java
+ agh.ics.oop.World
+ agh.ics.oop.World$1
