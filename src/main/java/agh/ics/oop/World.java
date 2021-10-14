@@ -1,6 +1,7 @@
 package agh.ics.oop;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -24,15 +25,16 @@ public class World {
 
 
         // konwersja i printowanie na jednym streamie
-        Stream.of(args)
-                .map(arg -> switch (arg) {
-                    case "f" -> Direction.FORWARD;
-                    case "b" -> Direction.BACKWARDS;
-                    case "l" -> Direction.LEFT;
-                    case "r" -> Direction.RIGHT;
-                    default -> null;
-                })
-                .forEach(World::printAnimal);
+//        Stream.of(args)
+//                .map(arg -> switch (arg) {
+//                    case "f" -> Direction.FORWARD;
+//                    case "b" -> Direction.BACKWARDS;
+//                    case "l" -> Direction.LEFT;
+//                    case "r" -> Direction.RIGHT;
+//                    default -> null;
+//                })
+//                .filter(Objects::nonNull)
+//                .forEach(World::printAnimal);
 
 
         // stream "na dwa razy" z funkcja run
@@ -44,6 +46,7 @@ public class World {
 //                    case "r" -> Direction.RIGHT;
 //                    default -> null;
 //                })
+//                .filter(Objects::nonNull)
 //                .collect(Collectors
 //                        .toCollection(ArrayList::new));
 
