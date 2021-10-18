@@ -25,16 +25,16 @@ public class World {
 
 
         // konwersja i printowanie na jednym streamie
-//        Stream.of(args)
-//                .map(arg -> switch (arg) {
-//                    case "f" -> Direction.FORWARD;
-//                    case "b" -> Direction.BACKWARDS;
-//                    case "l" -> Direction.LEFT;
-//                    case "r" -> Direction.RIGHT;
-//                    default -> null;
-//                })
-//                .filter(Objects::nonNull)
-//                .forEach(World::printAnimal);
+        Stream.of(args)
+                .map(arg -> switch (arg) {
+                    case "f" -> Direction.FORWARD;
+                    case "b" -> Direction.BACKWARDS;
+                    case "l" -> Direction.LEFT;
+                    case "r" -> Direction.RIGHT;
+                    default -> null;
+                })
+                .filter(Objects::nonNull)
+                .forEach(World::printAnimal);
 
 
         // stream "na dwa razy" z funkcja run
