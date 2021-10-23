@@ -1,0 +1,2 @@
+agh/ics/oop/MapDirectionTest.java
+ agh.ics.oop.MapDirectionTest

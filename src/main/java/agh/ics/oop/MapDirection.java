@@ -2,46 +2,18 @@ package agh.ics.oop;
 
 public enum MapDirection {
     NORTH,
+    EAST,
     SOUTH,
-    WEST,
-    EAST;
+    WEST;
 
     public MapDirection next() {
-        switch (this) {
-
-            case WEST -> {
-                return NORTH;
-            }
-            case NORTH -> {
-                return EAST;
-            }
-            case EAST -> {
-                return SOUTH;
-            }
-            case SOUTH -> {
-                return WEST;
-            }
-        }
-        return SOUTH;
+        MapDirection[] directions = MapDirection.values();
+        return directions[(this.ordinal() + 1) % directions.length];
     }
 
     public MapDirection previous() {
-        switch (this) {
-
-            case WEST -> {
-                return SOUTH;
-            }
-            case NORTH -> {
-                return WEST;
-            }
-            case EAST -> {
-                return NORTH;
-            }
-            case SOUTH -> {
-                return EAST;
-            }
-        }
-        return SOUTH;
+        MapDirection[] directions = MapDirection.values();
+        return directions[(this.ordinal() - 1 + directions.length) % directions.length];
     }
 
     public Vector2d toUnitVector() {
@@ -56,11 +28,11 @@ public enum MapDirection {
             case EAST -> {
                 return new Vector2d(1, 0);
             }
-            case SOUTH -> {
+            default -> {
                 return new Vector2d(0, -1);
             }
         }
-        return new Vector2d(0, 0);
+
     }
 
     @Override
@@ -75,10 +47,9 @@ public enum MapDirection {
             case NORTH -> {
                 return "Północ";
             }
-            case SOUTH -> {
+            default -> {
                 return "Południe";
             }
         }
-        return "";
     }
 }

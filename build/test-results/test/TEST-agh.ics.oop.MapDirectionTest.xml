@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="agh.ics.oop.MapDirectionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-23T17:36:26" hostname="DESKTOP-ENVA86M" time="0.028">
+  <properties/>
+  <testcase name="toUnitVector()" classname="agh.ics.oop.MapDirectionTest" time="0.028"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
