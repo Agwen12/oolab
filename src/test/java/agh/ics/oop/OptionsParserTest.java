@@ -11,11 +11,20 @@ class OptionsParserTest {
 
     @Test
     void parseTest() {
+        String[] allWrong = {"da", "d", "as", "tad"};
+        String[] empty = {};
         String[] strings = {"f", "l", "b", "r", null,"fdsa","ftas", "dsa"};
-        ArrayList<MoveDirection> test = new ArrayList<>(Arrays.asList(MoveDirection.FORWARD, MoveDirection.LEFT,
-                MoveDirection.BACKWARD, MoveDirection.RIGHT));
-        ArrayList<MoveDirection> u = OptionsParser.parse(strings);
-        assertEquals(test, u);
+        assertEquals(new ArrayList<>(Arrays.asList(MoveDirection.FORWARD, MoveDirection.LEFT,
+                MoveDirection.BACKWARD, MoveDirection.RIGHT)),
+                OptionsParser.parse(strings)
+        );
+
+        assertEquals(new ArrayList<>(),
+                OptionsParser.parse(empty));
+
+        assertEquals(new ArrayList<>(),
+                OptionsParser.parse(allWrong));
+
     }
 
 }

@@ -1,44 +1,11 @@
 package agh.ics.oop;
 
 public class Animal {
-    public Vector2d getPosition() {
-        return position;
-    }
-
-    public void setPosition(Vector2d position) {
-        this.position = position;
-    }
 
     private Vector2d position = new Vector2d(2, 2);
     private MapDirection orientation = MapDirection.NORTH;
 
     public Animal() {
-    }
-
-    public MapDirection getOrientation() {
-        return orientation;
-    }
-
-    public void setOrientation(MapDirection orientation) {
-        this.orientation = orientation;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Animal animal = (Animal) o;
-
-        if (!position.equals(animal.position)) return false;
-        return orientation == animal.orientation;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = position.hashCode();
-        result = 31 * result + orientation.hashCode();
-        return result;
     }
 
     public void move(MoveDirection direction) {
@@ -60,8 +27,30 @@ public class Animal {
         }
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Animal animal = (Animal) o;
+
+        if (!position.equals(animal.position)) return false;
+        return orientation == animal.orientation;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = position.hashCode();
+        result = 31 * result + orientation.hashCode();
+        return result;
+    }
+
+
+
     @Override
     public String toString() {
         return position + " " + orientation;
     }
+
 }

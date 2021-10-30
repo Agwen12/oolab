@@ -10,7 +10,9 @@ import java.util.stream.Stream;
 public class OptionsParser {
 
     public static ArrayList<MoveDirection> parse(String[] strings) {
+        if (strings.length < 1) return new ArrayList<>();
         return Arrays.stream(strings)
+                .filter(Objects::nonNull)
                 .map(arg -> switch (arg) {
                     case "f" -> MoveDirection.FORWARD;
                     case "b" -> MoveDirection.BACKWARD;

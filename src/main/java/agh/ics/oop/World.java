@@ -10,42 +10,19 @@ public class World {
     public static void main(String[] args) {
 
 
-//        run(args);
-//        Vector2d position1 = new Vector2d(1,2);
-//        System.out.println(position1);
-//        Vector2d position2 = new Vector2d(-2,1);
-//        System.out.println(position2);
-//        System.out.println(position1.add(position2));
-//        System.out.println(MapDirection.EAST.next());
-//        System.out.println(MapDirection.EAST.previous());
-//        System.out.println(MapDirection.EAST.toUnitVector());
-//        System.out.println(MapDirection.EAST.toString());
         Animal animal = new Animal();
         System.out.println(animal.toString());
-        ArrayList<MoveDirection> u = OptionsParser.parse(args);
-        for (MoveDirection direction: u) {
-            animal.move(direction);
-            System.out.println(animal.toString() + "  " + direction);
-        }
-//        animal.move(MoveDirection.RIGHT);
-//        animal.move(MoveDirection.FORWARD);
-//        animal.move(MoveDirection.FORWARD);
-//        animal.move(MoveDirection.FORWARD);
-//        System.out.println(animal);
+        run(args, animal);
 
     }
 
-    public static void run(String[] args) {
-        Stream.of(args)
-                .map(arg -> switch (arg) {
-                    case "f" -> Direction.FORWARD;
-                    case "b" -> Direction.BACKWARDS;
-                    case "l" -> Direction.LEFT;
-                    case "r" -> Direction.RIGHT;
-                    default -> null;
-                })
-                .filter(Objects::nonNull)
-                .forEach(World::printAnimal);
+    public static void run(String[] args, Animal animal) {
+//        ArrayList<MoveDirection> u = ;
+        for (MoveDirection direction: OptionsParser.parse(args)) {
+            animal.move(direction);
+            System.out.println(animal.toString() + "  " + direction);
+        }
+
 
     }
 

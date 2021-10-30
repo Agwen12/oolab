@@ -2,10 +2,6 @@ package agh.ics.oop;
 
 import org.junit.jupiter.api.Test;
 
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -13,17 +9,17 @@ class AnimalTest {
 
     @Test
     void move() {
-        Animal animal1 = new Animal();
-        ArrayList<MoveDirection> u = new ArrayList(Arrays.asList(MoveDirection.FORWARD, MoveDirection.FORWARD, MoveDirection.FORWARD));
-        for (MoveDirection direction: u) {
-            animal1.move(direction);
-        }
-        Animal animal2 = new Animal();
-        animal2.setPosition(new Vector2d(2, 4));
-        assertEquals(animal1, animal2);
-        animal1.move(MoveDirection.LEFT);
-        animal2.setOrientation(MapDirection.WEST);
-        assertEquals(animal2.getOrientation(), animal1.getOrientation());
+        Animal animal = new Animal();
+        World.run(new String[]{"f", "f", "f", "f", "f", "f"}, animal);
+        assertEquals("(2,4) Północ", animal.toString());
 
+        World.run(new String[]{"b", "b", "b", "b", "b", "b"}, animal);
+        assertEquals("(2,0) Północ", animal.toString());
+
+        World.run(new String[]{"l", "f", "f", "f", "f", "f"}, animal);
+        assertEquals("(0,0) Zachód", animal.toString());
+
+        World.run(new String[]{"r", "r", "f", "f", "f", "f", "f", "f"}, animal);
+        assertEquals("(4,0) Wschód", animal.toString());
     }
 }
