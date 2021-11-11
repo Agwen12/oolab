@@ -17,8 +17,15 @@ public class World {
         engine.run();
     }
 
-}
 
+    public static void run(String[] args, Animal animal) {
+//        ArrayList<MoveDirection> u = ;
+        for (MoveDirection direction : OptionsParser.parse(args)) {
+            animal.move(direction);
+            System.out.println(animal.toString() + "  " + direction);
+        }
+    }
+}
 
 
 

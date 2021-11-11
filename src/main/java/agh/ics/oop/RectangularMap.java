@@ -23,7 +23,8 @@ public class RectangularMap implements IWorldMap {
 
     @Override
     public boolean place(Animal animal) {
-        if (!isOccupied(animal.getPosition())) {
+        if (!isOccupied(animal.getPosition()) && animal.getPosition().precedes(new Vector2d(width, height)) &&
+                animal.getPosition().follows(new Vector2d(0, 0))) {
             animalList.add(animal);
             return true;
         }
