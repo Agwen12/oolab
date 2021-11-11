@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="agh.ics.oop.AnimalTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-30T19:10:39" hostname="DESKTOP-ENVA86M" time="0.039">
+<testsuite name="agh.ics.oop.AnimalTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-11T18:03:21" hostname="DESKTOP-ENVA86M" time="0.04">
   <properties/>
-  <testcase name="boardBoundary()" classname="agh.ics.oop.AnimalTest" time="0.039"/>
-  <system-out><![CDATA[(2,3) PĂłĹ‚noc  FORWARD
-(2,4) PĂłĹ‚noc  FORWARD
-(2,4) PĂłĹ‚noc  FORWARD
-(2,4) PĂłĹ‚noc  FORWARD
-(2,4) PĂłĹ‚noc  FORWARD
-(2,4) PĂłĹ‚noc  FORWARD
-(2,3) PĂłĹ‚noc  BACKWARD
-(2,2) PĂłĹ‚noc  BACKWARD
-(2,1) PĂłĹ‚noc  BACKWARD
-(2,0) PĂłĹ‚noc  BACKWARD
-(2,0) PĂłĹ‚noc  BACKWARD
-(2,0) PĂłĹ‚noc  BACKWARD
-(2,0) ZachĂłd  LEFT
-(1,0) ZachĂłd  FORWARD
-(0,0) ZachĂłd  FORWARD
-(0,0) ZachĂłd  FORWARD
-(0,0) ZachĂłd  FORWARD
-(0,0) ZachĂłd  FORWARD
-(0,0) PĂłĹ‚noc  RIGHT
-(0,0) WschĂłd  RIGHT
-(1,0) WschĂłd  FORWARD
-(2,0) WschĂłd  FORWARD
-(3,0) WschĂłd  FORWARD
-(4,0) WschĂłd  FORWARD
-(4,0) WschĂłd  FORWARD
-(4,0) WschĂłd  FORWARD
+  <testcase name="move()" classname="agh.ics.oop.AnimalTest" time="0.04"/>
+  <system-out><![CDATA[^  FORWARD
+^  FORWARD
+^  FORWARD
+^  FORWARD
+^  FORWARD
+^  FORWARD
+^  BACKWARD
+^  BACKWARD
+^  BACKWARD
+^  BACKWARD
+^  BACKWARD
+^  BACKWARD
+<  LEFT
+<  FORWARD
+<  FORWARD
+<  FORWARD
+<  FORWARD
+<  FORWARD
+^  RIGHT
+>  RIGHT
+>  FORWARD
+>  FORWARD
+>  FORWARD
+>  FORWARD
+>  FORWARD
+>  FORWARD
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
