@@ -13,7 +13,6 @@ public class MapVisualizerWidget extends JFrame {
         area.setEditable(false);
         area.setFont(new Font(Font.DIALOG, Font.PLAIN, 19));
         add(area, BorderLayout.CENTER);
-        setVisible(true);
     }
 
 }
