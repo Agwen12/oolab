@@ -1,2 +1,10 @@
-package agh.ics.oop;public class AbstractWorldMapElement {
+package agh.ics.oop;
+
+public abstract class AbstractWorldMapElement {
+    protected Vector2d position;
+
+    public Vector2d getPosition() {
+        return position;
+    }
+
 }

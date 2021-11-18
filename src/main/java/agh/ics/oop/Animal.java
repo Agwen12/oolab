@@ -1,8 +1,6 @@
 package agh.ics.oop;
 
-public class Animal {
-
-    private Vector2d position;
+public class Animal extends AbstractWorldMapElement {
     private MapDirection orientation = MapDirection.NORTH;
     private final IWorldMap map;
 
@@ -35,11 +33,6 @@ public class Animal {
                 if (map.canMoveTo(temp)) this.position = temp;
             }
         }
-    }
-
-    // vector is constant so whatever
-    public Vector2d getPosition() {
-        return this.position;
     }
 
     @Override

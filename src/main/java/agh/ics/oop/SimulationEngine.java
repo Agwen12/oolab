@@ -45,8 +45,11 @@ public class SimulationEngine implements IEngine {
         JTextArea area = (JTextArea) frame.getContentPane().getComponent(0);
         area.append(map.toString());
         if (verbose) { System.out.println(map.toString()); }
+
         for (int i = 0; i < directions.size(); i++) {
             this.engineAnimals.get(i % engineAnimals.size()).move(directions.get(i));
+
+
             if (verbose) {
                 System.out.println(map.toString());
                 area.setText("");
