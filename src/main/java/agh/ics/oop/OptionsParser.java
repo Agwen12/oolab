@@ -14,10 +14,10 @@ public class OptionsParser {
         return Arrays.stream(strings)
                 .filter(Objects::nonNull)
                 .map(arg -> switch (arg) {
-                    case "f" -> MoveDirection.FORWARD;
-                    case "b" -> MoveDirection.BACKWARD;
-                    case "l" -> MoveDirection.LEFT;
-                    case "r" -> MoveDirection.RIGHT;
+                    case "f", "forward" -> MoveDirection.FORWARD;
+                    case "b", "backward" -> MoveDirection.BACKWARD;
+                    case "l", "left" -> MoveDirection.LEFT;
+                    case "r", "right" -> MoveDirection.RIGHT;
                     default -> null;
                 })
                 .filter(Objects::nonNull)

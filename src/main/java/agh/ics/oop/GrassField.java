@@ -1,9 +1,6 @@
 package agh.ics.oop;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.OptionalInt;
+import java.util.*;
 import java.util.stream.IntStream;
 
 public class GrassField implements IWorldMap {
@@ -15,22 +12,27 @@ public class GrassField implements IWorldMap {
 
     public GrassField(int grassPatchNumber) {
         this.grassPatchNumber = grassPatchNumber;
-
         double range = Math.sqrt(grassPatchNumber * 10);
-        for (int i = 0; i < grassPatchNumber; i++) {
-            grassList.add(new Grass(new Vector2d((int) (Math.random() * range), (int) (Math.random() * range))));
+        int grassCounter = 0;
+        while (grassCounter < this.grassPatchNumber) {
+            Vector2d pos = new Vector2d((int) (Math.random() * range), (int) (Math.random() * range));
+            if (objectAt(pos) == null) {
+                grassList.add(new Grass(pos));
+                grassCounter++;
+            }
         }
     }
 
 
     @Override
     public boolean canMoveTo(Vector2d position) {
-        return (objectAt(position) == null || objectAt(position).getClass() == Grass.class);
+        return (objectAt(position) == null || objectAt(position).getClass() != Animal.class);
     }
 
     @Override
     public boolean place(Animal animal) {
-        if (!isOccupied(animal.getPosition())) {
+        Vector2d position =  animal.getPosition();
+        if (!isOccupied(position) || objectAt(position).getClass() != Animal.class) {
             animalList.add(animal);
             return true;
         }
@@ -42,6 +44,9 @@ public class GrassField implements IWorldMap {
         for (Animal animal1: animalList) {
             if (animal1.getPosition().equals(position)) return true;
         }
+        for (Grass grass: grassList) {
+            if (position.equals(grass.getPosition())) return true;
+        }
         return false;
     }
 
@@ -51,9 +56,8 @@ public class GrassField implements IWorldMap {
             if (animal.getPosition().equals(position)) return animal;
         }
         for (Grass grass: grassList) {
-            if (grass.getPosition().equals(position)) return grass;
+            if (position.equals(grass.getPosition())) return grass;
         }
-
         return null;
     }
 
@@ -61,8 +65,17 @@ public class GrassField implements IWorldMap {
     @Override
     public String toString() {
         MapVisualizer mapVisualizer =  new MapVisualizer(this);
-        int width = animalList.stream().mapToInt(value -> value.getPosition().x).max().orElseThrow(NoSuchElementException::new);
-        int height = animalList.stream().mapToInt(value -> value.getPosition().y).max().orElseThrow(NoSuchElementException::new);
-        return mapVisualizer.draw(new Vector2d(0, 0), new Vector2d(width, height));
+        Vector2d topRight = new Vector2d((int) Math.sqrt(grassPatchNumber) + 1, (int) Math.sqrt(grassPatchNumber) + 1);
+        Vector2d bottomLeft = new Vector2d(0, 0);
+        for (Animal animal: animalList) {
+            topRight = animal.getPosition().upperRight(topRight);
+            bottomLeft = animal.getPosition().lowerLeft(bottomLeft);
+        }
+        for (Grass grass: grassList) {
+            topRight = grass.getPosition().upperRight(topRight);
+            bottomLeft = grass.getPosition().lowerLeft(bottomLeft);
+        }
+
+        return mapVisualizer.draw(bottomLeft, topRight);
     }
 }
