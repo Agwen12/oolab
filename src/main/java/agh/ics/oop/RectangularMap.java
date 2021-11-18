@@ -7,7 +7,7 @@ public class RectangularMap implements IWorldMap {
 
     private final int width;
     private final int height;
-    List<Animal> animalList = new ArrayList<>();
+    private final List<Animal> animalList = new ArrayList<>();
 
     public RectangularMap(int width, int height) {
         this.width = width - 1;
