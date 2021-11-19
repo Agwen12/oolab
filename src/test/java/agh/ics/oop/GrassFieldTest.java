@@ -40,6 +40,5 @@ class GrassFieldTest {
         map.place(animal);
         assertEquals(animal, map.objectAt(new Vector2d(3, 1)));
         assertNull(map.objectAt(new Vector2d(-1, -1)));
-
     }
 }

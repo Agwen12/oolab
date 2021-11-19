@@ -2,6 +2,7 @@ package agh.ics.oop;
 
 public class RectangularMap extends AbstractWorldMap implements IWorldMap {
 
+
     private final int width;
     private final int height;
 

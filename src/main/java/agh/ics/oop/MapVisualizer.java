@@ -15,6 +15,7 @@ public class MapVisualizer {
 
     /**
      * Initializes the MapVisualizer with an instance of map to visualize.
+     *
      * @param map
      */
     public MapVisualizer(IWorldMap map) {

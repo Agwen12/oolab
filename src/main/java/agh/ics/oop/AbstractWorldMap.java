@@ -23,14 +23,14 @@ abstract public class AbstractWorldMap {
     }
 
     public boolean isOccupied(Vector2d position) {
-        for (AbstractWorldMapElement element: elementList) {
+        for (AbstractWorldMapElement element : elementList) {
             if (position.equals(element.getPosition())) return true;
         }
         return false;
     }
 
     public Object objectAt(Vector2d position) {
-        for (AbstractWorldMapElement element: elementList) if (position.equals(element.getPosition())) return element;
+        for (AbstractWorldMapElement element : elementList) if (position.equals(element.getPosition())) return element;
         return null;
     }
 

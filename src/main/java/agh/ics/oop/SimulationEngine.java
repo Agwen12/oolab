@@ -15,16 +15,17 @@ public class SimulationEngine implements IEngine {
     public SimulationEngine(List<MoveDirection> directions, IWorldMap map, List<Vector2d> positions) {
         this.directions = directions;
         this.map = map;
-        for (Vector2d position: positions) {
+        for (Vector2d position : positions) {
             Animal animal = new Animal(map, position);
             if (map.place(animal)) engineAnimals.add(animal);
         }
     }
+
     public SimulationEngine(List<MoveDirection> directions, IWorldMap map, List<Vector2d> positions, boolean verbose) {
         this.directions = directions;
         this.map = map;
         this.verbose = verbose;
-        for (Vector2d position: positions) {
+        for (Vector2d position : positions) {
             Animal animal = new Animal(map, position);
             if (map.place(animal)) engineAnimals.add(animal);
         }
@@ -44,7 +45,9 @@ public class SimulationEngine implements IEngine {
         frame.setVisible(verbose);
         JTextArea area = (JTextArea) frame.getContentPane().getComponent(0);
         area.append(map.toString());
-        if (verbose) { System.out.println(map.toString()); }
+        if (verbose) {
+            System.out.println(map.toString());
+        }
 
         for (int i = 0; i < directions.size(); i++) {
             this.engineAnimals.get(i % engineAnimals.size()).move(directions.get(i));

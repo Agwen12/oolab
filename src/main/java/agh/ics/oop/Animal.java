@@ -14,8 +14,8 @@ public class Animal extends AbstractWorldMapElement {
         this.position = new Vector2d(2, 2);
     }
 
-    public Animal(){
-        this.position = new Vector2d(2,2);
+    public Animal() {
+        this.position = new Vector2d(2, 2);
         this.map = new RectangularMap(5, 5);
     }
 
@@ -52,7 +52,6 @@ public class Animal extends AbstractWorldMapElement {
         result = 31 * result + orientation.hashCode();
         return result;
     }
-
 
 
     @Override

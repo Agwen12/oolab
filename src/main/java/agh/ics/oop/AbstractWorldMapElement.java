@@ -7,4 +7,5 @@ public abstract class AbstractWorldMapElement {
         return position;
     }
 
+
 }

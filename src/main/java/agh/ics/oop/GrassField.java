@@ -36,10 +36,9 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
     }
 
 
-
     @Override
     public String toString() {
-        for (AbstractWorldMapElement element: elementList) {
+        for (AbstractWorldMapElement element : elementList) {
             this.upperRight = element.getPosition().upperRight(this.upperRight);
             this.lowerLeft = element.getPosition().lowerLeft(this.lowerLeft);
         }

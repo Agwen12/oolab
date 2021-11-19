@@ -16,8 +16,6 @@ public class World {
         List<Vector2d> positions = new ArrayList<>(Arrays.asList(new Vector2d(2, 2), new Vector2d(3, 4), new Vector2d(4, 4), new Vector2d(5, 4)));
         IEngine engine = new SimulationEngine(directions, map, positions);
         engine.run();
-
-//        System.out.println(map.toString());
     }
 
 
