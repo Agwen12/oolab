@@ -7,6 +7,7 @@ public class RectangularMap extends AbstractWorldMap implements IWorldMap {
     private final int height;
 
     public RectangularMap(int width, int height) {
+        this.mapVisualizer = new MapVisualizer(this);
         this.width = width - 1;
         this.height = height - 1;
         this.upperRight = new Vector2d(this.width, this.height);

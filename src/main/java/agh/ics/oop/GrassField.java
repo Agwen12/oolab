@@ -28,7 +28,7 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
     @Override
     public boolean canMoveTo(Vector2d position) {
         Object object = objectAt(position);
-        if (object != null && object.getClass() == Grass.class) {
+        if (object instanceof Grass) {
             elementList.remove(object);
             placeGrass(1);
         }

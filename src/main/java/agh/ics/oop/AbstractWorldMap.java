@@ -10,8 +10,7 @@ abstract public class AbstractWorldMap {
     protected MapVisualizer mapVisualizer;
 
     public boolean canMoveTo(Vector2d position) {
-        return (objectAt(position) == null ||
-                objectAt(position).getClass() != Animal.class);
+        return (!(objectAt(position) instanceof Animal));
     }
 
     public boolean place(Animal animal) {
@@ -30,8 +29,17 @@ abstract public class AbstractWorldMap {
     }
 
     public Object objectAt(Vector2d position) {
-        for (AbstractWorldMapElement element : elementList) if (position.equals(element.getPosition())) return element;
-        return null;
+        Object obj = null;
+        for (AbstractWorldMapElement element : elementList) {
+            if (position.equals(element.getPosition())) {
+                if (element instanceof Animal) {
+                    return element;
+                } else {
+                    obj = element;
+                }
+            }
+        }
+        return obj;
     }
 
     public String toString() {
