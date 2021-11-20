@@ -5,7 +5,7 @@ import java.util.List;
 
 abstract public class AbstractWorldMap {
     protected List<AbstractWorldMapElement> elementList = new ArrayList<>();
-    protected Vector2d lowerLeft = new Vector2d(0, 0);
+    protected Vector2d lowerLeft = new Vector2d(Integer.MAX_VALUE, Integer.MAX_VALUE);
     protected Vector2d upperRight = new Vector2d(0, 0);
     protected MapVisualizer mapVisualizer;
 
