@@ -56,9 +56,8 @@ public class SimulationEngine implements IEngine {
             if (verbose) {
                 System.out.println(map.toString());
                 area.setText("");
-                area.append(map.toString());// widget tekstowy, nawet dziala, ale jest paskudny
+                area.append(map.toString());
 
-                //dla odrobiny dramatyzmu
                 try {
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException e) {
