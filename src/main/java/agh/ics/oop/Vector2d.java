@@ -58,4 +58,13 @@ public class Vector2d {
     public Vector2d opposite() {
         return new Vector2d(-this.x, -this.y);
     }
+
+//    @Override
+//    public int compareTo(Object o) {
+//        if (!(o instanceof Vector2d)) return 0;
+//        Vector2d vec = (Vector2d) o;
+//        if (this.x < vec.x || this.y < vec.y) return -1;
+//        else if (this.x > vec.x || this.y > vec.y) return 1;
+//        else return 0;
+//    }
 }

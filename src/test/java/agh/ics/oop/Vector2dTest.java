@@ -71,4 +71,13 @@ public class Vector2dTest {
         assertEquals(new Vector2d(3, -1), new Vector2d(-3, 1).opposite());
         assertEquals(new Vector2d(0, 0), new Vector2d(0, 0).opposite());
     }
+
+//    @Test
+//    void compareTo() {
+//        assertEquals(-1, new Vector2d(2,2).compareTo(new Vector2d(3, 2)));
+//        assertEquals(-1, new Vector2d(2,2).compareTo(new Vector2d(2, 3)));
+//        assertEquals(1, new Vector2d(20,21).compareTo(new Vector2d(3, 2)));
+//        assertEquals(1, new Vector2d(20,2).compareTo(new Vector2d(3, 2)));
+//        assertEquals(1, new Vector2d(2,20).compareTo(new Vector2d(3, 2)));
+//    }
 }
