@@ -47,4 +47,5 @@ public class RectangularMap extends AbstractWorldMap implements IWorldMap {
         }
         return false;
     }
+
 }

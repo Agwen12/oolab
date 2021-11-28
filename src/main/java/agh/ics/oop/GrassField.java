@@ -1,13 +1,8 @@
 package agh.ics.oop;
 
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
 public class GrassField extends AbstractWorldMap implements IWorldMap {
     private final double range;
-//    private final SortedSet<Integer> keySetX = new TreeSet<>();
-//    private final SortedSet<Integer> keySetY = new TreeSet<>();
+
 
 
     public GrassField(int grassPatchNumber) {
@@ -23,8 +18,7 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
             Object obj = objectAt(pos);
             if (obj == null) {
                 elementMap.put(pos, new Grass(pos));
-//                keySetX.add(pos.x);
-//                keySetY.add(pos.y);
+
                 grassCounter++;
             }
         }
@@ -48,8 +42,6 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
             this.upperRight = element.getPosition().upperRight(this.upperRight);
             this.lowerLeft = element.getPosition().lowerLeft(this.lowerLeft);
         }
-//        this.upperRight = new Vector2d(keySetX.last(), keySetY.last());
-//        this.lowerLeft = new Vector2d(keySetX.first(), keySetY.first());
         return super.toString();
     }
 

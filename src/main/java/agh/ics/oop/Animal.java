@@ -44,11 +44,11 @@ public class Animal extends AbstractWorldMapElement {
         }
     }
 
-    void addObserver(IPositionChangeObserver observer) {
+    public void addObserver(IPositionChangeObserver observer) {
         observers.add(observer);
     }
 
-    void removeObserver(IPositionChangeObserver observer) {
+    public void removeObserver(IPositionChangeObserver observer) {
         observers.remove(observer);
     }
 
