@@ -30,15 +30,6 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
         }
     }
 
-//    @Override
-//    public boolean place(Animal animal) {
-//        if (super.place(animal)) {
-//            keySetX.add(animal.getPosition().x);
-//            keySetY.add(animal.getPosition().y);
-//            return true;
-//        }
-//        return false;
-//    }
 
     @Override
     public boolean canMoveTo(Vector2d position) {
@@ -66,9 +57,11 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
     public boolean positionChanged(Vector2d oldPosition, Vector2d newPosition) {
         if (!(oldPosition.equals(newPosition))) {
             AbstractWorldMapElement element = (AbstractWorldMapElement) objectAt(oldPosition);
-            elementMap.remove(oldPosition, element);
-            elementMap.put(newPosition, element);
-            return true;
+            if (element instanceof Animal) {
+                elementMap.remove(oldPosition, element);
+                elementMap.put(newPosition, element);
+                return true;
+            }
         }
         return false;
     }

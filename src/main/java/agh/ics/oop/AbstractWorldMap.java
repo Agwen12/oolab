@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-abstract public class AbstractWorldMap {
+abstract public class AbstractWorldMap implements IPositionChangeObserver{
     protected Map<Vector2d, AbstractWorldMapElement> elementMap = new LinkedHashMap<>();
     protected Vector2d lowerLeft = new Vector2d(Integer.MAX_VALUE, Integer.MAX_VALUE);
     protected Vector2d upperRight = new Vector2d(Integer.MIN_VALUE, Integer.MIN_VALUE);
@@ -46,5 +46,4 @@ abstract public class AbstractWorldMap {
         return mapVisualizer.draw(this.lowerLeft, this.upperRight);
     }
 
-    public abstract boolean positionChanged(Vector2d oldPosition, Vector2d newPosition);
 }
