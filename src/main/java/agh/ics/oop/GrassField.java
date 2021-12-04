@@ -2,6 +2,7 @@ package agh.ics.oop;
 
 public class GrassField extends AbstractWorldMap implements IWorldMap {
     private final double range;
+    private final MapBoundary mapBoundary = new MapBoundary();
 
 
 
@@ -17,11 +18,19 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
             Vector2d pos = new Vector2d((int) (Math.random() * this.range), (int) (Math.random() * this.range));
             Object obj = objectAt(pos);
             if (obj == null) {
-                elementMap.put(pos, new Grass(pos));
-
+                Grass grass = new Grass(pos);
+                elementMap.put(pos, grass);
+                mapBoundary.addElement(pos); //TODO check if it's working correctly
                 grassCounter++;
             }
         }
+    }
+
+    @Override
+    public boolean place(Animal animal) throws IllegalArgumentException {
+        mapBoundary.addElement(animal.getPosition());
+        animal.addObserver(mapBoundary);
+        return super.place(animal);
     }
 
 
@@ -30,6 +39,7 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
         Object object = objectAt(position);
         if (object instanceof Grass) {
             elementMap.remove(((Grass) object).position, object);
+            mapBoundary.removeElement(position);
             placeGrass(1);
         }
         return super.canMoveTo(position);
@@ -38,10 +48,8 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
 
     @Override
     public String toString() {
-        for (AbstractWorldMapElement element : elementMap.values().stream().toList()) {
-            this.upperRight = element.getPosition().upperRight(this.upperRight);
-            this.lowerLeft = element.getPosition().lowerLeft(this.lowerLeft);
-        }
+        this.upperRight = mapBoundary.getUpperRight();
+        this.lowerLeft = mapBoundary.getLowerLeft();
         return super.toString();
     }
 

@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class OptionsParser {
 
-    public static List<MoveDirection> parse(String[] strings) {
+    public static List<MoveDirection> parse(String[] strings) throws IllegalArgumentException {
         if (strings.length < 1) return new ArrayList<>();
         return Arrays.stream(strings)
                 .filter(Objects::nonNull)
@@ -18,9 +18,8 @@ public class OptionsParser {
                     case "b", "backward" -> MoveDirection.BACKWARD;
                     case "l", "left" -> MoveDirection.LEFT;
                     case "r", "right" -> MoveDirection.RIGHT;
-                    default -> null;
+                    default -> throw new IllegalArgumentException(arg + " is not legal move specification");
                 })
-                .filter(Objects::nonNull)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 }

@@ -1,8 +1,5 @@
 package agh.ics.oop;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -10,12 +7,16 @@ import java.util.stream.Stream;
 public class World {
     public static void main(String[] args) {
 
-        List<MoveDirection> directions = OptionsParser.parse(args);
-//        IWorldMap map = new RectangularMap(10, 5);
-        AbstractWorldMap map = new GrassField(14);
-        List<Vector2d> positions = new ArrayList<>(Arrays.asList(new Vector2d(2, 2), new Vector2d(3, 4), new Vector2d(4, 4), new Vector2d(5, 4)));
-        IEngine engine = new SimulationEngine(directions, map, positions);
-        engine.run();
+        try {
+            List<MoveDirection> directions = OptionsParser.parse(args);
+            AbstractWorldMap map = new GrassField(14);
+            List<Vector2d> positions = new ArrayList<>(Arrays.asList(new Vector2d(2, 2), new Vector2d(3, 4), new Vector2d(4, 4), new Vector2d(5, 4)));
+            IEngine engine = new SimulationEngine(directions, map, positions);
+            engine.run();
+        } catch (IllegalArgumentException exception) {
+            exception.printStackTrace();
+            System.exit(1);
+        }
     }
 
 
@@ -25,6 +26,7 @@ public class World {
             System.out.println(animal.toString() + "  " + direction);
         }
     }
+    
 }
 
 

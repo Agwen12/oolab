@@ -14,12 +14,12 @@ abstract public class AbstractWorldMap implements IPositionChangeObserver{
         return (!(objectAt(position) instanceof Animal));
     }
 
-    public boolean place(Animal animal) {
+    public boolean place(Animal animal) throws IllegalArgumentException {
         if (canMoveTo(animal.getPosition())) {
             elementMap.put(animal.getPosition(), animal);
             return true;
         }
-        return false;
+        throw new IllegalArgumentException(animal.position.toString() + " is incorrect");
     }
 
     public boolean isOccupied(Vector2d position) {
@@ -28,17 +28,6 @@ abstract public class AbstractWorldMap implements IPositionChangeObserver{
     }
 
     public Object objectAt(Vector2d position) {
-//        Object obj = null;
-////        for (AbstractWorldMapElement element : elementMap) {
-//            if (position.equals(elementMap.get(position).getPosition())) {
-//                if (element instanceof Animal) {
-//                    return element;
-//                } else {
-//                    obj = element;
-////                }
-//            }
-//        }
-//        return obj;
         return elementMap.get(position);
     }
 
