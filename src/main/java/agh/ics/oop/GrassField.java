@@ -26,6 +26,11 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
         }
     }
 
+    public void updateSize() {
+        this.upperRight = mapBoundary.getUpperRight();
+        this.lowerLeft = mapBoundary.getLowerLeft();
+    }
+
     @Override
     public boolean place(Animal animal) throws IllegalArgumentException {
         mapBoundary.addElement(animal.getPosition());
@@ -48,8 +53,7 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
 
     @Override
     public String toString() {
-        this.upperRight = mapBoundary.getUpperRight();
-        this.lowerLeft = mapBoundary.getLowerLeft();
+        updateSize();
         return super.toString();
     }
 

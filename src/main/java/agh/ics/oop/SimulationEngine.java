@@ -50,7 +50,8 @@ public class SimulationEngine implements IEngine {
     public void run() {
 
         JFrame frame = new MapVisualizerWidget();
-        frame.setVisible(verbose);
+//        frame.setVisible(verbose);
+        frame.setVisible(false);
         JTextArea area = (JTextArea) frame.getContentPane().getComponent(0);
         area.append(map.toString());
         if (verbose) {

@@ -35,4 +35,11 @@ abstract public class AbstractWorldMap implements IPositionChangeObserver{
         return mapVisualizer.draw(this.lowerLeft, this.upperRight);
     }
 
+    public Vector2d getLowerLeft() {
+        return lowerLeft;
+    }
+
+    public Vector2d getUpperRight() {
+        return upperRight;
+    }
 }
