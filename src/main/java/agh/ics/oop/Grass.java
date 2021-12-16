@@ -20,4 +20,8 @@ public class Grass extends AbstractWorldMapElement {
         return position.equals(grass.position);
     }
 
+    @Override
+    public String getName() {
+        return "src/main/resources/grass.png";
+    }
 }
