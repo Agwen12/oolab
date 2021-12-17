@@ -39,13 +39,10 @@ public class RectangularMap extends AbstractWorldMap implements IWorldMap {
 
     @Override
     public boolean positionChanged(Vector2d oldPosition, Vector2d newPosition) {
-        if (!(oldPosition.equals(newPosition))) {
             AbstractWorldMapElement element = (AbstractWorldMapElement) objectAt(oldPosition);
             elementMap.remove(oldPosition, element);
             elementMap.put(newPosition, element);
             return true;
-        }
-        return false;
     }
 
 }

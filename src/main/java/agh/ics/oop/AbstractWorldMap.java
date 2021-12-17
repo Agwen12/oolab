@@ -39,6 +39,10 @@ abstract public class AbstractWorldMap implements IPositionChangeObserver{
         return lowerLeft;
     }
 
+    public Map<Vector2d, AbstractWorldMapElement> getElementMap() {
+        return  elementMap;
+    }
+
     public Vector2d getUpperRight() {
         return upperRight;
     }

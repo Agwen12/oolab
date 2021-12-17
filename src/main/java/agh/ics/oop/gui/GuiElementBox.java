@@ -8,9 +8,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
+import java.io.FileNotFoundException;
+
 public class GuiElementBox {
 
-    public GuiElementBox (AbstractWorldMapElement element) {
+    private VBox vBox;
+
+    public GuiElementBox (AbstractWorldMapElement element) throws FileNotFoundException {
         Image image = new Image(element.getName());
         ImageView view = new ImageView(image);
         view.setFitHeight(20);
@@ -20,10 +24,14 @@ public class GuiElementBox {
         if (element instanceof Grass) imageLabel = new Label("Grass");
         else imageLabel = new Label("Animal");
 
-        VBox vBox = new VBox();
-        vBox.getChildren().add(view);
-        vBox.getChildren().add(imageLabel);
+        this.vBox = new VBox();
+        this.vBox.getChildren().add(view);
+        this.vBox.getChildren().add(imageLabel);
 
-        vBox.setAlignment(Pos.CENTER);
+        this.vBox.setAlignment(Pos.CENTER);
+    }
+
+    public VBox getvBox() {
+        return vBox;
     }
 }

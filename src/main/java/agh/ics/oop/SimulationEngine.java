@@ -6,11 +6,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class SimulationEngine implements IEngine {
+public class SimulationEngine implements IEngine, Runnable {
 
     private final AbstractWorldMap map;
     private final List<Animal> engineAnimals = new ArrayList<>();
-    private final List<MoveDirection> directions;
+    private List<MoveDirection> directions;
     private boolean verbose = true;
 
     public SimulationEngine(List<MoveDirection> directions, AbstractWorldMap map, List<Vector2d> positions) {
@@ -39,11 +39,26 @@ public class SimulationEngine implements IEngine {
         }
     }
 
+    public SimulationEngine(AbstractWorldMap map, List<Vector2d> positions) {
+        this.map = map;
+        for (Vector2d position : positions) {
+            Animal animal = new Animal(map, position);
+            if (map.place(animal)) {
+                engineAnimals.add(animal);
+                animal.addObserver(this.map);
+            }
+        }
+    }
+
     // just for testing purposes
     public Vector2d[] getAnimalsPositions() {
         return this.engineAnimals.stream()
                 .map(Animal::getPosition)
                 .toArray(Vector2d[]::new);
+    }
+
+    public void setDirections(List<MoveDirection> directions) {
+        this.directions = directions;
     }
 
     @Override
@@ -52,8 +67,6 @@ public class SimulationEngine implements IEngine {
         JFrame frame = new MapVisualizerWidget();
 //        frame.setVisible(verbose);
         frame.setVisible(false);
-        JTextArea area = (JTextArea) frame.getContentPane().getComponent(0);
-        area.append(map.toString());
         if (verbose) {
             System.out.println(map.toString());
         }
@@ -63,9 +76,6 @@ public class SimulationEngine implements IEngine {
 
             if (verbose) {
                 System.out.println(map.toString());
-                area.setText("");
-                area.append(map.toString());
-
                 try {
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException e) {
