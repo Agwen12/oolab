@@ -25,8 +25,14 @@ public class Animal extends AbstractWorldMapElement {
 
     public void move(MoveDirection direction) {
         switch (direction) {
-            case LEFT -> orientation = orientation.previous();
-            case RIGHT -> orientation = orientation.next();
+            case LEFT ->  {
+                orientation = orientation.previous();
+                positionChanged(this.position, this.position);
+            }
+            case RIGHT -> {
+                orientation = orientation.next();
+                positionChanged(this.position, this.position);
+            }
             case FORWARD -> {
                 Vector2d temp = this.position.add(this.orientation.toUnitVector());
                 if (map.canMoveTo(temp)) {

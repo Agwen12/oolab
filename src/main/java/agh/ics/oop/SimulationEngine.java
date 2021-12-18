@@ -2,7 +2,6 @@ package agh.ics.oop;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -12,6 +11,7 @@ public class SimulationEngine implements IEngine, Runnable {
     private final List<Animal> engineAnimals = new ArrayList<>();
     private List<MoveDirection> directions;
     private boolean verbose = true;
+    private int moveDelay = 300;
 
     public SimulationEngine(List<MoveDirection> directions, AbstractWorldMap map, List<Vector2d> positions) {
         this.directions = directions;
@@ -57,6 +57,13 @@ public class SimulationEngine implements IEngine, Runnable {
                 .toArray(Vector2d[]::new);
     }
 
+    public Animal[] getAnimals() {
+        return this.engineAnimals.toArray(Animal[]::new);
+//                .stream()
+//                .toArray(Animal[]::new);
+    }
+
+
     public void setDirections(List<MoveDirection> directions) {
         this.directions = directions;
     }
@@ -64,24 +71,17 @@ public class SimulationEngine implements IEngine, Runnable {
     @Override
     public void run() {
 
-        JFrame frame = new MapVisualizerWidget();
-//        frame.setVisible(verbose);
-        frame.setVisible(false);
-        if (verbose) {
-            System.out.println(map.toString());
-        }
-
         for (int i = 0; i < directions.size(); i++) {
             this.engineAnimals.get(i % engineAnimals.size()).move(directions.get(i));
 
-            if (verbose) {
-                System.out.println(map.toString());
-                try {
-                    TimeUnit.SECONDS.sleep(1);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
+//            System.out.println(map.toString());
+            try {
+                TimeUnit.MILLISECONDS.sleep(this.moveDelay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+
         }
         System.err.println("Program has finished!");
     }
