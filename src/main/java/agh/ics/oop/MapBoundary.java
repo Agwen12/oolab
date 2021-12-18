@@ -4,10 +4,10 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class MapBoundary implements IPositionChangeObserver {
-
     private final SortedSet<Vector2d> xSet = new TreeSet<>((o1, o2) -> {
         if (o1.x > o2.x) return 1;
         else if (o1.x < o2.x) return -1;
+        else if (o1.equals(o2)) return 0;
         else {
             if (o1.y > o2.y) return 1;
             return -1;
@@ -17,6 +17,7 @@ public class MapBoundary implements IPositionChangeObserver {
     private final SortedSet<Vector2d> ySet = new TreeSet<>((o1, o2) -> {
         if (o1.y > o2.y) return 1;
         else if (o1.y < o2.y) return -1;
+        else if (o1.equals(o2)) return 0;
         else {
             if (o1.x > o2.x) return 1;
             return -1;

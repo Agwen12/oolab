@@ -30,7 +30,7 @@ public class App extends Application implements IPositionChangeObserver{
 
             this.map = new GrassField(14);
             this.map.updateSize();
-            List<Vector2d> positions = new ArrayList<>(Arrays.asList(new Vector2d(2, 2), new Vector2d(5, 4)));
+            List<Vector2d> positions = new ArrayList<>(Arrays.asList(new Vector2d(2, 2))); // , new Vector2d(5, 4)
             this.engine = new SimulationEngine(this.map, positions);
             Arrays.stream(engine.getAnimals()).forEach((animal) -> {
                 animal.addObserver(this);
@@ -127,7 +127,9 @@ public class App extends Application implements IPositionChangeObserver{
     @Override
     public boolean positionChanged(Vector2d oldPosition, Vector2d newPosition) {
         Platform.runLater(() -> {
-            System.out.println(this.map.toString());
+//            System.out.println(this.map.toString());
+//            System.out.println(this.map.mapBoundary.xSet.toString());
+//            System.out.println(this.map.mapBoundary.ySet.toString());
             gridPane.getChildren().clear();
             displayMap();
         });

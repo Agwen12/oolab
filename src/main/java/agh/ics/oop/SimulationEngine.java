@@ -11,7 +11,7 @@ public class SimulationEngine implements IEngine, Runnable {
     private final List<Animal> engineAnimals = new ArrayList<>();
     private List<MoveDirection> directions;
     private boolean verbose = true;
-    private int moveDelay = 300;
+    private final int moveDelay = 300;
 
     public SimulationEngine(List<MoveDirection> directions, AbstractWorldMap map, List<Vector2d> positions) {
         this.directions = directions;

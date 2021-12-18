@@ -20,7 +20,7 @@ public class GrassField extends AbstractWorldMap implements IWorldMap {
             if (obj == null) {
                 Grass grass = new Grass(pos);
                 elementMap.put(pos, grass);
-                mapBoundary.addElement(pos); //TODO check if it's working correctly
+                mapBoundary.addElement(pos);
                 grassCounter++;
             }
         }
